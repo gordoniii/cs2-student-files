@@ -26,3 +26,13 @@ function draw() {
     rect(i * gridsize, 0, gridsize, gridsize);
   }
 }
+
+//generate
+let thisGen = ca[ca.length - 1];
+let nextGen = Array(gensize).fill(0);
+
+for (let i = 1; i < nextGen.length - 1; i++) {
+  let nextval = applyRules(thisGen[i - 1], thisGen[i], thisGen[i + 1]);
+  nextGen[i] = nextval;
+}
+ca.push(nextGen);
