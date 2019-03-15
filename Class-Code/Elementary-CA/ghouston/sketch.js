@@ -1,3 +1,10 @@
+//Gordon Houston III
+//2/28/19
+//Elementary CA Project
+
+//Class Project
+
+let gen1 = Array(57).fill(0);
 const ruleset = [0,1,1,1,1,1,1,0]
 let ca = [];
 let gensize = 101;
@@ -5,6 +12,9 @@ let gridsize;
 
 function setup() {
   createCanvas(400, 400);
+  gen1[round(gen1.length / 2)] = 1;
+  gridsize = width / gen1.length;
+  console.log(gridsize);
   let gen0 = Array(gensize).fill(0);
   gen0[floor(gensize/2)]=1;
   ca.push(gen0);
@@ -13,6 +23,17 @@ function setup() {
 }
 
 function draw() {
+  background(120);
+
+  for (let i = 0; i < gen1.length; i++) {
+    if (gen1(i) == 1) {
+      fill(0);
+    } else {
+      fill(255);
+    }
+      noStroke()
+      rect(i * gridsize, 0, gridsize, gridsize);
+    }
   background(255)
   //display
   noStroke();
@@ -21,8 +42,9 @@ function draw() {
           if(ca[j][i] == 1){
             rect(i*gridsize,j*gridsize,gridsize,gridsize);
           }
+  
+    }
   }
-
     //generate
   let thisGen = ca[ca.length-1]
   let nextGen = Array(gensize).fill(0);
@@ -34,7 +56,6 @@ function draw() {
   }
   ca.push(nextGen);
 
-  }
 
   function applyRules(l,me,r){
     if(l == 1 && me == 1 && r == 1) return ruleset[0]
