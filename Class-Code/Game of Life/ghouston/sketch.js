@@ -20,8 +20,8 @@ function setup() {
     for (let row = 0; row < rows; row++) {
         current.
         push(new Array(columns)
-        .fill(0)
-        .map(() => round(random())))
+            .fill(0)
+            .map(() => round(random())))
     }
     noStroke()
     current[5][5] = 1
