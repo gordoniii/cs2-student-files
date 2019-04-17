@@ -2,7 +2,7 @@
 //OOP
 //4/17/19
 
-/* A brief description of what the program is */
+/*OOP Project*/
 
 
 let x, y, r;
