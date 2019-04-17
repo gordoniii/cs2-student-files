@@ -10,11 +10,13 @@ let xVel = 5;
 let yVel = 5;
 let bubble0;
 let bubble1;
+let bubble2;
 
 function setup() {
     createCanvas(600, 400);
     bubble0 = new Bubble()
     bubble1 = new Bubble()
+    bubble2 = new Bubble()
     ellipseMode(RADIUS)
 }
 
@@ -27,6 +29,10 @@ function draw() {
     bubble1.move()
     bubble1.display()
     bubble1.checkEdges()
+
+    bubble2.move()
+    bubble2.display()
+    bubble2.checkEdges()
 }
 class Bubble {
     constructor() {
