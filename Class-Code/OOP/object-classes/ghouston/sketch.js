@@ -2,12 +2,10 @@
 //OOP
 //4/17/19
 
-/*OOP Project*/
+/*A template that creates 3 balls that move in a random order seperate from each other*/
 
 
-let x, y, r;
-let xVel = 5;
-let yVel = 5;
+
 let bubble0;
 let bubble1;
 let bubble2;
