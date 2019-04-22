@@ -5,32 +5,23 @@
 /*A template that creates 3 balls that move in a random order seperate from each other*/
 
 
-
-let bubble0;
-let bubble1;
-let bubble2;
+let bubbles = new Array()
 
 function setup() {
     createCanvas(600, 400);
-    bubble0 = new Bubble()
-    bubble1 = new Bubble()
-    bubble2 = new Bubble()
+    for (let i = 0; i < 100; i++) {
+        bubbles.push(new Bubble(i))
+    }
     ellipseMode(RADIUS)
 }
 
 function draw() {
     background(0, 50);
-    bubble0.move()
-    bubble0.display()
-    bubble0.checkEdges()
-
-    bubble1.move()
-    bubble1.display()
-    bubble1.checkEdges()
-
-    bubble2.move()
-    bubble2.display()
-    bubble2.checkEdges()
+    for (let i = 0; i < 100; i++) {
+        bubbles[i].move()
+        bubbles[i].display()
+        bubbles[i].checkEdges()
+    }
 }
 class Bubble {
     constructor() {
