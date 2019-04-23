@@ -19,8 +19,8 @@ class Walker {
             fill(200)
         }
         ellipse(this.x, this.y, this.r)
-
-        aggregate(other)
+    }
+    aggregate(other) {
         if (!this.static && other.static) {
             let d = dist(this.x, this.y, other.x, other.y)
             let sumOfRadii = this.r + other.r
@@ -28,11 +28,10 @@ class Walker {
 
             if (collide) {
                 this.static = true
-
             }
         }
-
     }
+
     move() {
         if (!this.static) {
             this.x += random(-5, 5);
@@ -40,25 +39,32 @@ class Walker {
             //this.r += random(-5, 5);
         }
     }
+}
 
 
-    let walkers = [];
+let walkers = [];
 
-    function setup() {
-        createCanvas(600, 600);
-        for (let i = 0; i < 100; i++) {
-            walkers.push(new Walker(random(width), random(height), 10));
-        }
-
-        let seed = new Walker(width / 2, height / 2, 10);
-        seed.static = true;
-        walkers.push(seed);
+function setup() {
+    createCanvas(600, 600);
+    ellipseMode(RADIUS)
+    for (let i = 0; i < 100; i++) {
+        walkers.push(new Walker(random(width), random(height), 10));
     }
 
-    function draw() {
-        background(220);
-        for (let walker of walkers) {
-            walker.show();
-            walker.move();
+    let seed = new Walker(width / 2, height / 2, 10);
+    seed.static = true;
+    walkers.push(seed);
+}
+
+function draw() {
+    background(220);
+    for (let i = 0; i < walkers.length; i++) {
+        walkers[i].show();
+        walkers[i].move();
+        for(let j = i + 1; j < walkers.length; j++){
+            walkers[i].aggregate(walkers[j])
         }
     }
+    //aggregate(other)
+
+}
