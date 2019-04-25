@@ -34,8 +34,8 @@ class Walker {
 
     move() {
         if (!this.static) {
-            this.x += random(-5, 5);
-            this.y += random(-5, 5);
+            this.x += random(-10, 10);
+            this.y += random(-10, 10);
             //this.r += random(-5, 5);
         }
     }
@@ -51,7 +51,7 @@ function setup() {
         walkers.push(new Walker(random(width), random(height), 10));
     }
 
-    let seed = new Walker(width / 2, height / 2, 10);
+    let seed = new Walker(width / 4, height / 4, 20);
     seed.static = true;
     walkers.push(seed);
 }
@@ -61,7 +61,7 @@ function draw() {
     for (let i = 0; i < walkers.length; i++) {
         walkers[i].show();
         walkers[i].move();
-        for(let j = i + 1; j < walkers.length; j++){
+        for (let j = i + 1; j < walkers.length; j++) {
             walkers[i].aggregate(walkers[j])
         }
     }
