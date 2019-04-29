@@ -10,6 +10,7 @@ class Walker {
         this.y = y
         this.r = r
         this.static = false
+        
     }
 
 
