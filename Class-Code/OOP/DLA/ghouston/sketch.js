@@ -1,8 +1,8 @@
-//Your Name(s)
-//Project Name
-//Date
+//Gordon Houston III
+//DLA
+//4/29/19
 
-/* A brief description of what the program is */
+/* It is a randomly growing conecpt that */
 
 class Walker {
     constructor(x, y, r) {
@@ -12,11 +12,12 @@ class Walker {
         this.static = false
     }
 
+
     show() {
         if (this.static) {
-            fill(0)
+            fill(400)
         } else {
-            fill(200)
+            fill(4000)
         }
         ellipse(this.x, this.y, this.r)
     }
@@ -34,8 +35,8 @@ class Walker {
 
     move() {
         if (!this.static) {
-            this.x += random(-10, 10);
-            this.y += random(-10, 10);
+            this.x += random(-5, 5);
+            this.y += random(-5, 5);
             //this.r += random(-5, 5);
         }
     }
@@ -58,6 +59,7 @@ function setup() {
 
 function draw() {
     background(220);
+    //for (let j = 0; j < 100; j++) {
     for (let i = 0; i < walkers.length; i++) {
         walkers[i].show();
         walkers[i].move();
@@ -65,6 +67,8 @@ function draw() {
             walkers[i].aggregate(walkers[j])
         }
     }
+    //}
+    //for(let w of walkers) w.show
     //aggregate(other)
 
 }
