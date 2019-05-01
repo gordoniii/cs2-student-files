@@ -8,20 +8,28 @@ class Walker {
     constructor(x, y, r) {
         this.x = x
         this.y = y
-        this.r = r
+        this.r = 5
         this.static = false
-        
+        this.attach = x
+        this.attach = y
+
     }
 
 
     show() {
+        noStroke();
         if (this.static) {
-            fill(400)
+            fill(255, 0, 0)
         } else {
-            fill(4000)
+            fill(4)
         }
         ellipse(this.x, this.y, this.r)
     }
+
+    //checkEdges() {
+    //if (this.x + this.r >= width || this.x - this.r <= 1) this.xVel *= -1;
+    //if (this.y + this.r >= height || this.y - this.r <= 1) this.yVel *= -1;
+    //}
     aggregate(other) {
         if (!this.static && other.static) {
             let d = dist(this.x, this.y, other.x, other.y)
@@ -53,17 +61,18 @@ function setup() {
         walkers.push(new Walker(random(width), random(height), 10));
     }
 
-    let seed = new Walker(width / 4, height / 4, 20);
+    let seed = new Walker(width / 10, height / 10, 100);
     seed.static = true;
     walkers.push(seed);
 }
 
 function draw() {
-    background(220);
+    background(220, 540, 540);
     //for (let j = 0; j < 100; j++) {
     for (let i = 0; i < walkers.length; i++) {
         walkers[i].show();
         walkers[i].move();
+        //walkers[i].checkEdges();
         for (let j = i + 1; j < walkers.length; j++) {
             walkers[i].aggregate(walkers[j])
         }
