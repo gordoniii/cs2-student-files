@@ -21,15 +21,10 @@ class Walker {
         if (this.static) {
             fill(255, 0, 0)
         } else {
-            fill(4)
+            fill(5)
         }
         ellipse(this.x, this.y, this.r)
     }
-
-    //checkEdges() {
-    //if (this.x + this.r >= width || this.x - this.r <= 1) this.xVel *= -1;
-    //if (this.y + this.r >= height || this.y - this.r <= 1) this.yVel *= -1;
-    //}
     aggregate(other) {
         if (!this.static && other.static) {
             let d = dist(this.x, this.y, other.x, other.y)
@@ -46,7 +41,7 @@ class Walker {
         if (!this.static) {
             this.x += random(-5, 5);
             this.y += random(-5, 5);
-            //this.r += random(-5, 5);
+            this.r += random(-1, 1);
         }
     }
 }
@@ -67,18 +62,12 @@ function setup() {
 }
 
 function draw() {
-    background(220, 540, 540);
-    //for (let j = 0; j < 100; j++) {
+    background(220, 440, 440);
     for (let i = 0; i < walkers.length; i++) {
         walkers[i].show();
         walkers[i].move();
-        //walkers[i].checkEdges();
         for (let j = i + 1; j < walkers.length; j++) {
             walkers[i].aggregate(walkers[j])
         }
     }
-    //}
-    //for(let w of walkers) w.show
-    //aggregate(other)
-
 }
